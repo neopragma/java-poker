@@ -1,5 +1,6 @@
 package com.neopragma.poker;
 
+import com.neopragma.preconditions.PreconditionNotMetException;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,13 +11,13 @@ import static org.junit.Assert.assertEquals;
 
 public class CardSetTest {
 
-    @Test(expected=IllegalArgumentException.class)
-    public void CardSet_throws_IllegalArgumentException_when_passed_a_null_reference() {
+    @Test(expected=PreconditionNotMetException.class)
+    public void CardSet_throws_PreconditionNotMetException_when_passed_a_null_reference() {
         new CardSet(null);
     }
 
-    @Test(expected=IllegalArgumentException.class)
-    public void CardSet_throws_IllegalArgumentException_when_passed_only_one_Card() {
+    @Test(expected=PreconditionNotMetException.class)
+    public void CardSet_throws_PreconditionNotMetException_when_passed_only_one_Card() {
         new CardSet(new ArrayList<Card>(Arrays.asList(new Card[] { new Card(Suit.SPADES, Rank.ACE) })));
     }
 

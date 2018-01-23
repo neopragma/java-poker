@@ -1,5 +1,7 @@
 package com.neopragma.poker;
 
+import com.neopragma.preconditions.Precondition;
+
 import java.util.List;
 
 /**
@@ -13,10 +15,7 @@ public class CardSet {
     private List<Card> cards;
 
     public CardSet(List<Card> cards) {
-        if (null == cards || cards.size() < 2) {
-            //TODO replace string literal message with resource bundle reference
-            throw new IllegalArgumentException("CardSet must contain at least 2 cards.");
-        }
+        Precondition.assertThat((null != cards && cards.size() > 1), "M002");
         this.cards = cards;
     }
 
