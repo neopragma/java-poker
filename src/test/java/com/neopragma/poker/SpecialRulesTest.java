@@ -32,7 +32,7 @@ public class SpecialRulesTest implements TestConstants
     @Test
     public void it_reports_wild_cards_are_in_effect() {
         Game game = new FiveCardStudGame()
-            .withWildCards(new CardImpl(Suit.NONE, Rank.JOKER));
+            .withWildCards(new PlayingCard(Suit.NONE, Rank.JOKER));
         assertEquals(true, game.wildCardsDeclared());
     }
 }

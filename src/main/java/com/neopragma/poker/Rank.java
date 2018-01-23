@@ -18,9 +18,9 @@ public enum Rank {
     KING(true),
     ACE(false, true);
 
-    /** CardImpl is considered a face card */
+    /** AbstractCard is considered a face card */
     private boolean faceCard;
-    /** CardImpl may be treated as high or low */
+    /** AbstractCard may be treated as high or low */
     private boolean highLow;
 
     Rank() {

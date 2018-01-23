@@ -10,7 +10,7 @@ package com.neopragma.poker;
  * @author neopragma
  * @since 1.8
  */
-public class NullCard implements Card {
+public class NullCard extends AbstractCard {
 
     @Override
     public Suit suit() {
