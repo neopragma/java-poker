@@ -2,6 +2,7 @@ package com.neopragma.poker;
 
 public enum Rank {
 
+    NONE(),
     JOKER(),
     TWO(),
     THREE(),
@@ -17,9 +18,9 @@ public enum Rank {
     KING(true),
     ACE(false, true);
 
-    /** Card is considered a face card */
+    /** CardImpl is considered a face card */
     private boolean faceCard;
-    /** Card may be treated as high or low */
+    /** CardImpl may be treated as high or low */
     private boolean highLow;
 
     Rank() {

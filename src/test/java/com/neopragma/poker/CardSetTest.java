@@ -13,20 +13,26 @@ public class CardSetTest {
 
     @Test(expected=PreconditionNotMetException.class)
     public void CardSet_throws_PreconditionNotMetException_when_passed_a_null_reference() {
-        new CardSet(null);
+        new CardSetImpl(null);
     }
 
     @Test(expected=PreconditionNotMetException.class)
     public void CardSet_throws_PreconditionNotMetException_when_passed_only_one_Card() {
-        new CardSet(new ArrayList<Card>(Arrays.asList(new Card[] { new Card(Suit.SPADES, Rank.ACE) })));
+        new CardSetImpl(new ArrayList<Card>(Arrays.asList(new Card[] { new CardImpl(Suit.SPADES, Rank.ACE) })));
     }
 
     @Test
     public void it_instantiates_valid_CardSet_object_with_two_Card_instances() {
         List<Card> cards = new ArrayList<Card>();
-        cards.add(new Card(Suit.CLUBS, Rank.ACE));
-        cards.add(new Card(Suit.SPADES, Rank.JACK));
-        CardSet set = new CardSet(cards);
-        assertEquals(new Card(Suit.SPADES, Rank.JACK), set.cards().get(1));
+        cards.add(new CardImpl(Suit.CLUBS, Rank.ACE));
+        cards.add(new CardImpl(Suit.SPADES, Rank.JACK));
+        CardSet set = new CardSetImpl(cards);
+        assertEquals(new CardImpl(Suit.SPADES, Rank.JACK), set.cards().get(1));
+    }
+
+    @Test
+    public void NullCardSet_returns_an_empty_list() {
+        CardSet set = new NullCardSet();
+        assertEquals(true, set.cards().isEmpty());
     }
 }

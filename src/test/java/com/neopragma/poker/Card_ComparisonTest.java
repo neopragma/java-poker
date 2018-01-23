@@ -8,17 +8,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
- * Checks of Card equals() and comparison functionality.
+ * Checks of CardImpl equals() and comparison functionality.
  * @author neopragma
  * @since 1.8
  */
 public class Card_ComparisonTest {
 
-    private Card king_of_hearts = new Card(Suit.HEARTS, Rank.KING);
-    private Card king_of_diamonds = new Card(Suit.DIAMONDS, Rank.KING);
-    private Card ten_of_diamonds = new Card(Suit.DIAMONDS, Rank.TEN);
-    private Card ten_of_diamonds_dup = new Card(Suit.DIAMONDS, Rank.TEN);
-    private Card ten_of_hearts = new Card(Suit.HEARTS, Rank.TEN);
+    private Card king_of_hearts = new CardImpl(Suit.HEARTS, Rank.KING);
+    private Card king_of_diamonds = new CardImpl(Suit.DIAMONDS, Rank.KING);
+    private Card ten_of_diamonds = new CardImpl(Suit.DIAMONDS, Rank.TEN);
+    private Card ten_of_diamonds_dup = new CardImpl(Suit.DIAMONDS, Rank.TEN);
+    private Card ten_of_hearts = new CardImpl(Suit.HEARTS, Rank.TEN);
 
     @Test
     public void it_compares_unequal_to_null() {
@@ -56,7 +56,7 @@ public class Card_ComparisonTest {
             assertEquals(RelativeValue.HIGHER, king_of_hearts.against(null));
         } catch (PreconditionNotMetException expectedException) {
             System.out.println("exception message: " + expectedException.getMessage());
-            assertEquals("In com.neopragma.poker.Card.against: Argument <that> cannot be null", expectedException.getMessage());
+            assertEquals("In com.neopragma.poker.CardImpl.against: Argument <that> cannot be null", expectedException.getMessage());
         } catch (Exception unexpectedException) {
             fail("Expected PreconditionNotMetException, got " + unexpectedException);
         }

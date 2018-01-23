@@ -1,5 +1,6 @@
 package com.neopragma.preconditions;
 
+import com.neopragma.helpers.MessageId;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,7 +11,7 @@ public class PreconditionsTest {
     @Test
     public void it_throws_and_uses_resource_bundle() {
         try {
-            Precondition.assertThat(false, "M001", "hey");
+            Precondition.assertThat(false, new MessageId("M001"), "hey");
             fail("Expected PreconditionNotMetException but nothing was thrown.");
         } catch (PreconditionNotMetException expectedException) {
             assertEquals(

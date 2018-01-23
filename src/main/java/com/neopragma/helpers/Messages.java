@@ -1,7 +1,8 @@
-package com.neopragma.poker;
+package com.neopragma.helpers;
 
 import java.text.MessageFormat;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
@@ -29,9 +30,13 @@ public class Messages {
      */
     public static String message(String id, String...substitutionValues) {
         String message = null;
-        message = messages.getString(id);
-        if (null == message) {
+        try {
+            message = messages.getString(id);
+        } catch (MissingResourceException mre) {
             message = NOT_FOUND;
+        } catch (Exception unexpectedException) {
+            throw new RuntimeException("Unexpected exception accessing resource bundle 'messages'",
+                    unexpectedException);
         }
         return MessageFormat.format(message, substitutionValues);
     }

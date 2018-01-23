@@ -9,7 +9,7 @@ import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 
-/** Checks of Card functionality to recognize one-eyed face cards.
+/** Checks of CardImpl functionality to recognize one-eyed face cards.
  * @author neopragma
  * @since 1.8
  */
@@ -19,10 +19,10 @@ public class Card_OneEyedTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { new Card(Suit.SPADES, Rank.JACK),   true },
-                { new Card(Suit.HEARTS, Rank.JACK),   true },
-                { new Card(Suit.DIAMONDS, Rank.KING), true },
-                { new Card(Suit.CLUBS, Rank.JACK),    false}
+                { new CardImpl(Suit.SPADES, Rank.JACK),   true },
+                { new CardImpl(Suit.HEARTS, Rank.JACK),   true },
+                { new CardImpl(Suit.DIAMONDS, Rank.KING), true },
+                { new CardImpl(Suit.CLUBS, Rank.JACK),    false}
         });
     }
 
