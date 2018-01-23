@@ -5,15 +5,15 @@ import com.neopragma.preconditions.Precondition;
 
 public class CardImpl implements Card {
 
-    public static final String ARGUMENT_THAT_CANNOT_BE_NULL = "argument 'that' cannot be null.";
     public static final String CARD_MUST_HAVE_A_SUIT_AND_RANK = "CardImpl must have a Suit and Rank.";
     private Rank rank;
     private Suit suit;
 
     CardImpl(Suit suit, Rank rank) {
-        Precondition.assertThat(null != suit && null != rank, CARD_MUST_HAVE_A_SUIT_AND_RANK);
+        Precondition.assertThat(null != suit && null != rank, new MessageId("M003"));
         this.suit = suit;
-        this.rank = rank;    }
+        this.rank = rank;
+    }
 
     @Override
     public Suit suit() {
@@ -65,7 +65,7 @@ public class CardImpl implements Card {
 
     @Override
     public RelativeValue against(Card that, SuitRanking suitRanking) {
-        Precondition.assertThat(null != that, ARGUMENT_THAT_CANNOT_BE_NULL);
+        Precondition.assertThat(null != that, new MessageId("M001"), "that");
         if (null == suitRanking) {
             return against(that);
         }
