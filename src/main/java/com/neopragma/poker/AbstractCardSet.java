@@ -49,6 +49,8 @@ public abstract class AbstractCardSet implements CardSet {
 
         Card thisFirstCard = this.cards().size() > 0 ? this.cards().get(0) : null;
         Card thatFirstCard = that.cards().size() > 0 ? that.cards().get(0) : null;
+
+
         if (null == thisFirstCard) {
             if (null == thatFirstCard) {
                 return SAME;
@@ -61,10 +63,10 @@ public abstract class AbstractCardSet implements CardSet {
             }
         }
 
-        if (thisFirstCard.rank().ordinal() < thatFirstCard.rank().ordinal()) {
+        if (thisFirstCard.compareTo(thatFirstCard) == HIGHER) {
             return HIGHER;
         }
-        if (thisFirstCard.rank().ordinal() < thatFirstCard.rank().ordinal()) {
+        if (thisFirstCard.compareTo(thatFirstCard) == LOWER) {
             return LOWER;
         }
         if (suitRankingIsInEffect()) {

@@ -1,6 +1,6 @@
 package com.neopragma.poker;
 
-public interface Card {
+public interface Card extends Comparable<Card> {
     Suit suit();
 
     Rank rank();

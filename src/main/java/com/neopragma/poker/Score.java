@@ -41,18 +41,16 @@ public interface Score {
     /**
      * The result of analyzing the hand according to the rules of the game.
      * @param hand The Hand to be evaluated.
-     * @param game Any special rules to be applied (such as wild cards).
      * @return an enum representing the hand's score
      */
-    Score score(Hand hand, Game game);
+    Score score(Hand hand);
 
     /**
      * Determine whether the Hand contains a flush. Has default implementation. Typically called from Score.score().
      * @param hand The Hand to be evaluated.
-     * @param game Any special rules to be applied (such as wild cards).
      * @return true if the Hand contains a flush.
      */
-    default boolean flush (Hand hand, Game game) {
+    default boolean flush(Hand hand) {
         boolean flush = true;
         List<Card> cards = hand.show();
         Suit suit = cards.get(0).suit();
@@ -68,10 +66,9 @@ public interface Score {
     /**
      * Determine whether the Hand contains a straight. Has default implementation. Typically called from Score.score().
      * @param hand The Hand to be evaluated.
-     * @param game Any special rules to be applied (such as wild cards).
      * @return true if the Hand contains a straight.
      */
-    default boolean straight(Hand hand, Game game) {
+    default boolean straight(Hand hand) {
         boolean straight = true;
         List<Card> cards = hand.show();
         for (int i = 0 ; i < (cards.size()-1) ; i++) {
@@ -113,7 +110,8 @@ public interface Score {
                 .collect(toList());
 
         //TODO remove displays
-        System.out.println("Want to see CardSet objects sorted descending by Rank");
+        System.out.println("\n--------------------\nin Score.findCardSets()");
+        System.out.println("Want to see CardSet objects sorted descending by Rank within set size");
         for (CardSet cardSet : sortedCardSetsByRank) {
             System.out.println("Next CardSet");
             for (Card card : cardSet.cards()) {
@@ -124,20 +122,17 @@ public interface Score {
         return new Group(sortedCardSetsByRank);
     }
 
-
     /**
-     * Determine the hand's "high card". Default implementation returns the highest rank in the hand. You have to override this method in a Score enum depending on the rules of the game (high-low, wild cards, etc.).
+     * Determine a straight's "high card". Default implementation returns the highest rank in the hand.
      * @param hand The Hand to be evaluated.
-     * @param game Any special rules to be applied (such as wild cards).
-     * @param startingFrom The index into the sorted cards in the hand where the highest-ranking card is located. Default is 0. If the score() method determined the hand contains a pair, then it would pass 2 as this param value to pick up the rank of the highest card after the pair (0, 1, 2).
-     * @return Rank of the highest card in the hand after the value cards (e.g., those that make up a pair).
+     * @return Rank of the highest card in the hand.
      */
-    default Rank highCardRank(Hand hand, Game game, int startingFrom) {
-        return hand.show().get(startingFrom()).rank();
-    }
-
-    default int startingFrom() {
-        return 0;
+    default Rank highCardRank(Hand hand) {
+        List<Card> cards = hand.show();
+        cards.stream()
+            .sorted()
+            .collect(toList());
+        return cards.get(0).rank();
     }
 
 }
