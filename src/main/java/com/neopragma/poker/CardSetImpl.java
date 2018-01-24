@@ -1,5 +1,6 @@
 package com.neopragma.poker;
 
+import com.neopragma.helpers.MessageId;
 import com.neopragma.preconditions.Precondition;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class CardSetImpl extends AbstractCardSet {
 
     public CardSetImpl(List<Card> cards) {
-        Precondition.assertThat((null != cards && cards.size() > 1), "M002");
+        Precondition.assertThat((null != cards && cards.size() > 0), new MessageId("M002"));
         this.cards = cards;
     }
 

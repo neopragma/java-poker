@@ -93,92 +93,36 @@ public interface Score {
         List<Card> cards = hand.show();
 
         // Group the cards of similar rank
-        //TODO change to <Rank, CardSet> after adding Comparable support to CardSet
-        Map<Rank, List<Card>> rankGroups = new HashMap<Rank, List<Card>>();
+        Map<Rank, List<Card>> rankGroups = new HashMap<>();
         for (Card card : cards) {
-            if (false == rankGroups.containsKey(card.rank())) {
-                rankGroups.put(card.rank(), new ArrayList<Card>());
+            if (!rankGroups.containsKey(card.rank())) {
+                rankGroups.put(card.rank(), new ArrayList<>());
             }
             rankGroups.get(card.rank()).add(card);
         }
 
-        Map<Map<Integer, Rank>, List<Card>> cardsByCountAndRank = new HashMap<>();
+        // Put the grouped cards into card sets
+        List<CardSet> cardSetsByRank = new ArrayList<>();
         for (Rank rank : rankGroups.keySet()) {
-            Collections.reverse(rankGroups.get(rank));
-            Map<Integer, Rank> ranksByCount = new HashMap<Integer, Rank>();
-            ranksByCount.put(rankGroups.get(rank).size(), rank);
-            cardsByCountAndRank.put(ranksByCount, rankGroups.get(rank));
+            cardSetsByRank.add(new CardSetImpl(rankGroups.get(rank)));
         }
 
-        System.out.println("What's in cardsByCountAndRank?");
-        System.out.println("cardsByCountAndRank: " + cardsByCountAndRank);
-
-
-
-//        Map<Integer, List<Card>> rankGroupsByCount = new HashMap<>();
-//        for (Rank rank : rankGroups.keySet()) {
-//            Collections.reverse(rankGroups.get(rank));
-//            rankGroupsByCount.put(rankGroups.get(rank).size(), rankGroups.get(rank));
-//        }
-
-        Map sortedRankGroups = cardsByCountAndRank
-                .entrySet()
+        // Sort the card sets high to low by value
+        List<CardSet> sortedCardSetsByRank = cardSetsByRank
                 .stream()
                 .sorted(Collections.reverseOrder())
-                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
-
-        for (Rank rank : rankGroups.keySet()) {
-            //TODO remove display
-            System.out.println("In Score.groups()");
-            System.out.println("rank: " + rank + ", count: " + rankGroups.get(rank).size());
-        }
-
-//        Rank higherRank = null;
-//        int higherCount = 0;
-//        Rank lowerRank = null;
-//        int lowerCount = 0;
-//        Rank tempRank = null;
-//        for (Rank rank : rankGroups.keySet()) {
-//            int count = rankGroups.get(rank).size();
-//            if (count > higherCount) {
-//                lowerRank = higherRank;
-//                lowerCount = higherCount;
-//                higherRank = rank;
-//                higherCount = count;
-//            } else if (count > lowerCount) {
-//                lowerRank = rank;
-//                lowerCount = count;
-//            }
-//        }
-//        if (higherCount == lowerCount) {
-//            if (lowerRank.ordinal() > higherRank.ordinal()) {
-//                tempRank = higherRank;
-//                higherRank = lowerRank;
-//                lowerRank = tempRank;
-//            }
-//        }
+                .collect(toList());
 
         //TODO remove displays
-//        System.out.println("higherRank: " + higherRank + ", " + higherCount);
-//        System.out.println("lowerRank: " + lowerRank + ", " + lowerCount);
-
-
-        CardSet highCardSet = null;
-        CardSet lowCardSet = null;
-        Card highJunkCard = null;
-
-        //TODO remove displays
-
-        System.out.println("Rank.THREE.compareTo(Rank.SEVEN) ? " + (Rank.THREE.compareTo(Rank.SEVEN)));
-        System.out.println("sortedRankGroups contains these types:");
-        System.out.println("key is type " + sortedRankGroups.keySet().toArray()[0].getClass().getName());
-        System.out.println("number of entries is " + sortedRankGroups.size());
-        System.out.println("value is type " + sortedRankGroups.get(sortedRankGroups.keySet().toArray()[0]).getClass().getName());
-
-        System.out.println("sortedRankGroups");
-        for (Object o : sortedRankGroups.keySet()) {
-            System.out.println("for integer " + o + " we have " + sortedRankGroups.get(o));
+        System.out.println("Want to see CardSet objects sorted descending by Rank");
+        for (CardSet cardSet : sortedCardSetsByRank) {
+            System.out.println("Next CardSet");
+            for (Card card : cardSet.cards()) {
+                System.out.println("Card: " + card.rank() + " of " + card.suit());
+            }
         }
+
+
         //TODO change this to return Group[] or List<Group>
         //return new GroupResult(rankGroups, higherRank, higherCount, lowerRank, lowerCount);
     }
