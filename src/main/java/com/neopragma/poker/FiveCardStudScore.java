@@ -76,7 +76,9 @@ public class FiveCardStudScore implements Score {
 
     private void lookForRankGroups(Hand hand, Game game) {
         //TODO change return type to Group and adjust code in this method accordingly
-        GroupResult groupResult = groups(hand, game);
+        //GroupResult groupResult = groups(hand, game);
+        GroupResult groupResult = null;
+        groups(hand, game);
 
         System.out.println("In FiveCardStudScore.lookForRankGroups, GroupResult comes in with:");
         System.out.println("higherRank: " + groupResult.higherRank() + ", higherCount: " + groupResult.higherCount());

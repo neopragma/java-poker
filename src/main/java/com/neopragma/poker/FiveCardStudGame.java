@@ -24,7 +24,7 @@ public class FiveCardStudGame extends DefaultGame {
         Score hand1Score = FiveCardStudScore.newInstance().score(hand1, this);
         Score hand2Score = FiveCardStudScore.newInstance().score(hand2, this);
 
-
+        //TODO remove display
         System.out.println("FiveCardStudGame.applyScoringRules");
         System.out.println("hand1: " + hand1Score.handValue() + ", hand2: " + hand2Score.handValue());
 

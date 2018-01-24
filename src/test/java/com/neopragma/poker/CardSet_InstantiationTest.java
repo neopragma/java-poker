@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class CardSetTest {
+public class CardSet_InstantiationTest {
 
     @Test(expected=PreconditionNotMetException.class)
     public void CardSet_throws_PreconditionNotMetException_when_passed_a_null_reference() {
