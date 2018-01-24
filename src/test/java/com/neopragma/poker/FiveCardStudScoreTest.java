@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ScoringTest implements TestConstants {
+public class FiveCardStudScoreTest implements TestConstants {
 
     @Test
     public void with_no_suit_ranking_all_suits_compare_equal() {

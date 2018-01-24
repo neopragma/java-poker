@@ -2,11 +2,10 @@ package com.neopragma.poker;
 
 public class FiveCardStudScore implements Score {
     private HandValue handValue;
+    private Group group;
+    private Card highJunkCard;
     private Rank higherRank;
-    private int higherCount;
     private Rank lowerRank;
-    private int lowerCount;
-    private int startingFrom;
 
     private FiveCardStudScore() {
     }
@@ -26,42 +25,54 @@ public class FiveCardStudScore implements Score {
     }
 
     @Override
-    public int higherCount() {
-        return higherCount;
-    }
-
-    @Override
     public Rank lowerRank() {
         return lowerRank;
     }
 
     @Override
-    public int lowerCount() {
-        return lowerCount;
-    }
-
-    @Override
-    public int startingFrom() {
-        return startingFrom;
+    public Card highJunkCard() {
+        return highJunkCard;
     }
 
     @Override
     public Score score(Hand hand, Game game) {
         lookForStraightAndFlush(hand, game);
         if (handValue == HandValue.UNSCORED) {
-            lookForRankGroups(hand, game);
+            scoreGroup(findCardSets(hand));
         }
         return this;
+    }
+
+    private void scoreGroup(Group group) {
+        int[] countsBySet = new int[] { 0, 0, 0 };
+        for (int i = 0 ; i < 3 ; i++) {
+            if (i < group.cardSets().size()) {
+                countsBySet[i] = group.cardSets().get(i).cards().size();
+            }
+        }
+
+        if (countsBySet[0] == 4) {
+            handValue = HandValue.FOUR_OF_A_KIND;
+            highJunkCard = group.cardSets().get(group.cardSets().size() - 1).cards().get(0);
+        } else if (countsBySet[0] == 3 && countsBySet[1] == 2) {
+            handValue = HandValue.FULL_HOUSE;
+            higherRank = group.cardSets().get(0).cards().get(0).rank();
+            lowerRank = group.cardSets().get(1).cards().get(0).rank();
+        }
+
+
+        //TODO remove display
+        System.out.println("in FiveCardStudScore.scoreGroup(), countsBySet: " + countsBySet[0] + ", " + countsBySet[1] + ", " + countsBySet[2]);
+
     }
 
     private void lookForStraightAndFlush(Hand hand, Game game) {
         handValue = HandValue.UNSCORED;
         boolean flush = flush(hand, game);
         boolean straight = straight(hand, game);
-        higherRank = highCardRank(hand, game, startingFrom);
+        higherRank = highCardRank(hand, game);
 
         if (flush && straight) {
-            startingFrom = 0;
             if (higherRank == Rank.ACE) {
                 handValue = HandValue.ROYAL_FLUSH;
             } else {
@@ -74,43 +85,8 @@ public class FiveCardStudScore implements Score {
         }
     }
 
-    private void lookForRankGroups(Hand hand, Game game) {
-        //TODO change return type to Group and adjust code in this method accordingly
-        //GroupResult groupResult = groups(hand, game);
-        GroupResult groupResult = null;
-        groups(hand, game);
 
-        System.out.println("In FiveCardStudScore.lookForRankGroups, GroupResult comes in with:");
-        System.out.println("higherRank: " + groupResult.higherRank() + ", higherCount: " + groupResult.higherCount());
-
-        higherRank = groupResult.higherRank();
-        higherCount = groupResult.higherCount();
-        lowerRank = groupResult.lowerRank();
-        lowerCount = groupResult.lowerCount();
-        if (higherCount == 4) {
-            handValue = HandValue.FOUR_OF_A_KIND;
-        } else if (higherCount == 3) {
-            if (lowerCount < 2) {
-                handValue = HandValue.THREE_OF_A_KIND;
-            } else {
-                handValue = HandValue.FULL_HOUSE;
-            }
-        } else if (higherCount == 2) {
-            if (lowerCount == 2) {
-                handValue = HandValue.TWO_PAIR;
-            } else {
-                handValue = HandValue.PAIR;
-            }
-        } else {
-            handValue = HandValue.JUNK;
-        }
-
-        System.out.println("Just before returning the score:");
-        System.out.println("handValue: " + handValue + ", higherRank: " + higherRank() + ", higherCount: " + higherCount());
-    }
-
-    @Override
-    public Rank highCardRank(Hand hand, Game game, int startingFrom) {
-        return hand.show().get(startingFrom).rank();
+    public Rank highCardRank(Hand hand, Game game) {
+        return hand.show().get(0).rank();
     }
 }

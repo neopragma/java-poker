@@ -18,23 +18,25 @@ public interface Score {
      */
     HandValue handValue();
 
-    //TODO replace with Group
     /**
-     * The rank that has the higher value when the hand contains more than one group.
+     * The rank that has the higher value when the hand contains more than one card set.
      * For example, in a Full House, eights over fours, the higherRank is Rank.EIGHT.
      * @return the Rank of the higher-value group in the hand.
      */
     Rank higherRank();
-    int higherCount();
 
-    //TODO replace with Group
     /**
-     * The rank that has the lower value when the hand contains more than one group.
+     * The rank that has the lower value when the hand contains more than one card set.
      * For example, in a Full House, eights over fours, the lowerRank is Rank.FOUR.
      * @return the Rank of the lower-value group in the hand.
      */
     Rank lowerRank();
-    int lowerCount();
+
+    /**
+     * The highest card in the hand that is not part of a matching rank group.
+     * @return The highest card in the hand that is not part of a matching rank group.
+     */
+    Card highJunkCard();
 
     /**
      * The result of analyzing the hand according to the rules of the game.
@@ -84,12 +86,9 @@ public interface Score {
     /**
      * Determine whether the hand contains any matching ranks, such as three of a kind or pairs.
      * @param hand the Hand to be evaluated.
-     * @param game Any special rules to be applied (such as wild cards).
-     * @return List of Group instances, which describe pairs and so forth.
+     * @return Group instance which describes pairs and so forth in the hand.
      */
-    //default GroupResult groups(Hand hand, Game game) {
-    default void groups(Hand hand, Game game) {
-        //TODO change return type to Group[] or List<Group> instead of GroupResult
+    default Group findCardSets(Hand hand) {
         List<Card> cards = hand.show();
 
         // Group the cards of similar rank
@@ -122,9 +121,7 @@ public interface Score {
             }
         }
 
-
-        //TODO change this to return Group[] or List<Group>
-        //return new GroupResult(rankGroups, higherRank, higherCount, lowerRank, lowerCount);
+        return new Group(sortedCardSetsByRank);
     }
 
 
