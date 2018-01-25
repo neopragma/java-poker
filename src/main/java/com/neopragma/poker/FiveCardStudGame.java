@@ -4,11 +4,6 @@ import java.util.List;
 
 public class FiveCardStudGame extends DefaultGame {
 
-    Score score = null;
-
-    public FiveCardStudGame() {
-    }
-
     @Override
     public Result applyScoringRules(Hand hand1, Hand hand2) {
         sortHand(hand1);
@@ -17,12 +12,10 @@ public class FiveCardStudGame extends DefaultGame {
         Score hand1_Score = score(hand1);
         Score hand2_Score = score(hand2);
 
-        Result result = Result.TIE;
-
         // compare the numerical scores of the two hands
         // clear winner, like four-of-a-kind beats full house
 
-        result = winnerByValue(hand1_Score, hand2_Score);
+        Result result = winnerByValue(hand1_Score, hand2_Score);
         if (Result.TIE != result) return result;
 
         // same score: see if one has a higher ranking set,
@@ -42,12 +35,11 @@ public class FiveCardStudGame extends DefaultGame {
         return result;
     }
 
-    private List<Card> sortHand(Hand hand) {
+    private void sortHand(Hand hand) {
         List<Card> cards = hand.show();
         cards.sort((Card cards1, Card cards2) ->
                 cards2.rank().ordinal() - cards1.rank().ordinal()
         );
-        return cards;
     }
 
     private Score score(Hand hand) {
