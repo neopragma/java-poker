@@ -1,5 +1,5 @@
 package com.neopragma.poker;
 
 public enum Suit {
-    SPADES, HEARTS, DIAMONDS, CLUBS, NONE
+    NONE, SPADES, HEARTS, DIAMONDS, CLUBS
 }
