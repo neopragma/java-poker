@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="com.pholser:junit-quickcheck-core:0.8-beta-1" type="repository">
+    <properties maven-id="com.pholser:junit-quickcheck-core:0.8-beta-1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/pholser/junit-quickcheck-core/0.8-beta-1/junit-quickcheck-core-0.8-beta-1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/javaruntype/javaruntype/1.3/javaruntype-1.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/antlr/antlr-runtime/3.1.2/antlr-runtime-3.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ognl/ognl/3.1.12/ognl-3.1.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ru/vyarus/generics-resolver/2.0.1/generics-resolver-2.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -5,7 +5,7 @@ import com.neopragma.preconditions.Precondition;
 
 public class PlayingCard extends AbstractCard {
 
-    PlayingCard(Suit suit, Rank rank) {
+    public PlayingCard(Suit suit, Rank rank) {
         Precondition.assertThat(null != suit && null != rank, new MessageId("M003"));
         this.suit = suit;
         this.rank = rank;

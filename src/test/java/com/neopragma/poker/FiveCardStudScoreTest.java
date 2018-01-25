@@ -61,7 +61,6 @@ public class FiveCardStudScoreTest implements TestConstants {
         assertEquals(Result.WIN, hand1.beats(hand2, game));
     }
 
-
     @Test
     public void with_no_suit_ranking_in_effect_the_higher_straight_flush_wins() {
         Game game = new FiveCardStudGame();

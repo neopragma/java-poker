@@ -22,6 +22,24 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.pholser</groupId>
+      <artifactId>junit-quickcheck-core</artifactId>
+      <version>0.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.pholser</groupId>
+      <artifactId>junit-quickcheck-generators</artifactId>
+      <version>0.7</version>
+      <scope>test</scope>
+    </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.8.0-beta0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
