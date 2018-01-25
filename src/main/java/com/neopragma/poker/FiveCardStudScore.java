@@ -44,8 +44,8 @@ public class FiveCardStudScore implements Score {
     }
 
     private void scoreGroup(Group group) {
-        int[] countsBySet = new int[] { 0, 0, 0 };
-        for (int i = 0 ; i < 3 ; i++) {
+        int[] countsBySet = new int[]{0, 0, 0};
+        for (int i = 0; i < 3; i++) {
             if (i < group.cardSets().size()) {
                 countsBySet[i] = group.cardSets().get(i).cards().size();
             }
@@ -89,14 +89,6 @@ public class FiveCardStudScore implements Score {
             lowerRank = Rank.NONE;
             highJunkCard = group.cardSets().get(0).cards().get(0);
         }
-
-        //TODO remove display
-        System.out.println("in FiveCardStudScore.scoreGroup(), countsBySet: " + countsBySet[0] + ", " + countsBySet[1] + ", " + countsBySet[2]);
-        System.out.println("handValue: " + handValue);
-        System.out.println("higherRank: " + higherRank);
-        System.out.println("lowerRank: " + lowerRank);
-        System.out.println("highJunkCard: " + highJunkCard.rank() + " of " + highJunkCard.suit());
-
     }
 
     private void lookForStraightAndFlush(Hand hand) {

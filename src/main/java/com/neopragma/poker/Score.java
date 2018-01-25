@@ -109,16 +109,6 @@ public interface Score {
                 .sorted(Collections.reverseOrder())
                 .collect(toList());
 
-        //TODO remove displays
-        System.out.println("\n--------------------\nin Score.findCardSets()");
-        System.out.println("Want to see CardSet objects sorted descending by Rank within set size");
-        for (CardSet cardSet : sortedCardSetsByRank) {
-            System.out.println("Next CardSet");
-            for (Card card : cardSet.cards()) {
-                System.out.println("Card: " + card.rank() + " of " + card.suit());
-            }
-        }
-
         return new Group(sortedCardSetsByRank);
     }
 
