@@ -10,7 +10,7 @@ import java.util.List;
  * @author neopragma
  * @since 1.8
  */
-public class Group {
+class Group {
 
     private List<CardSet> cardSets;
 

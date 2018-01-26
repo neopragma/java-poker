@@ -11,9 +11,9 @@ import java.util.List;
  * @author neopragma
  * @since 1.8
  */
-public class CardSetImpl extends AbstractCardSet {
+class CardSetImpl extends AbstractCardSet {
 
-    public CardSetImpl(List<Card> cards) {
+    CardSetImpl(List<Card> cards) {
         Precondition.assertThat((null != cards && cards.size() > 0), new MessageId("M002"));
         this.cards = cards;
     }

@@ -18,7 +18,7 @@ public class CardSet_InstantiationTest {
 
     @Test
     public void it_instantiates_valid_CardSet_object_with_two_Card_instances() {
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         cards.add(new PlayingCard(Suit.CLUBS, Rank.ACE));
         cards.add(new PlayingCard(Suit.SPADES, Rank.JACK));
         CardSet set = new CardSetImpl(cards);
