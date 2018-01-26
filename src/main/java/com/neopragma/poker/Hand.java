@@ -12,8 +12,12 @@ public class Hand {
 
     private List<Card> cards;
 
+    public Hand() {
+        this.cards = new ArrayList<>();
+    }
+
     public Hand(Card...cards) {
-        this.cards = new ArrayList<Card>(Arrays.asList(cards));
+        this.cards = new ArrayList<>(Arrays.asList(cards));
     }
 
     public List<Card> show() {
@@ -24,4 +28,11 @@ public class Hand {
         return game.applyScoringRules(this, other);
     }
 
+    public void add(Card card) {
+        cards.add(card);
+    }
+
+    public void remove(Card card) {
+        cards.remove(card);
+    }
 }
