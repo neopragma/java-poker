@@ -1,11 +1,12 @@
 package com.neopragma.poker;
 
 import com.neopragma.poker.generators.Hands;
-import com.neopragma.poker.generators.PlayingCards;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
@@ -13,6 +14,7 @@ import static org.junit.Assume.assumeThat;
 
 @RunWith(JUnitQuickcheck.class)
 public class HandScoringPropertyTest {
+    @Ignore
     @Property(trials=100)
     public void strongerHandWins(@From(Hands.class) Hand hand1, @From(Hands.class) Hand hand2, Result result) {
         for (Hand hand : new Hand[] { hand1, hand2 }) {
