@@ -1,10 +1,8 @@
 package com.neopragma.poker;
 
-import java.util.ArrayList;
+public class StandardDeck extends DefaultDeck {
 
-class StandardDeck extends DefaultDeck {
-
-    StandardDeck() {
+    protected StandardDeck() {
         super();
     }
 }

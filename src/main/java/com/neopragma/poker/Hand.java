@@ -16,8 +16,12 @@ public class Hand {
         this.cards = new ArrayList<>();
     }
 
+    public Hand(List<Card> cards) {
+        this.cards = cards;
+    }
+
     public Hand(Card...cards) {
-        this.cards = new ArrayList<>(Arrays.asList(cards));
+        this(new ArrayList<>(Arrays.asList(cards)));
     }
 
     public List<Card> show() {
@@ -34,5 +38,11 @@ public class Hand {
 
     public void remove(Card card) {
         cards.remove(card);
+    }
+
+    public void sort() {
+        cards.sort((Card cards1, Card cards2) ->
+                cards2.rank().ordinal() - cards1.rank().ordinal()
+        );
     }
 }

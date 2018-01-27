@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/property-test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -26,7 +25,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: ognl:ognl:3.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javassist:javassist:3.11.0.GA" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: ru.vyarus:generics-resolver:2.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.pholser:junit-quickcheck-generators:0.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.pholser:junit-quickcheck-poker.generators:0.7" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.8.0-beta0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.8.0-beta0" level="project" />
   </component>

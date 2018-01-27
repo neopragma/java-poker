@@ -8,9 +8,9 @@ public class DefaultDeck implements Deck {
 
     private DeckType type;
     private List<Card> contents;
-    private List<Card> remaining;
+    protected List<Card> remaining;
 
-    DefaultDeck() {
+    protected DefaultDeck() {
         initializeContents();
     }
 

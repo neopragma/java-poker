@@ -1,29 +1,29 @@
 package com.neopragma.poker;
 
-import com.neopragma.poker.generators.Hands;
+import com.neopragma.poker.generators.CompetingHandsGenerator;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assume.assumeThat;
 
 @RunWith(JUnitQuickcheck.class)
 public class HandScoringPropertyTest {
-    @Ignore
-    @Property(trials=100)
-    public void strongerHandWins(@From(Hands.class) Hand hand1, @From(Hands.class) Hand hand2, Result result) {
-        for (Hand hand : new Hand[] { hand1, hand2 }) {
-            for (Card card : hand.show()) {
-                assumeThat(card.rank(), not(equalTo(Rank.JOKER)));
-                assumeThat(card.rank(), not(equalTo(Rank.NONE)));
-                assumeThat(card.suit(), not(equalTo(Suit.NONE)));
-            }
-        }
+
+    @Property(trials=10)
+    public void strongerHandWins(@From(CompetingHandsGenerator.class) CompetingHands data) {
+        // when Royal Flush, Straight Flush, Straight is generated for hand2, some needed cards
+        // may have been dealt to hand1 already. Filter those cases out.
+        assumeThat(data.hand1().show().size(), is(equalTo(5)));
+        assumeThat(data.hand2().show().size(), is(equalTo(5)));
+
+        Hand hand1 = data.hand1();
+        Hand hand2 = data.hand2();
+        Result result = data.result();
         Game game = new FiveCardStudGame();
         assertEquals(showHands(hand1, hand2), result, hand1.beats(hand2, game));
     }
