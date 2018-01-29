@@ -14,13 +14,8 @@ import static org.junit.Assume.assumeThat;
 @RunWith(JUnitQuickcheck.class)
 public class HandScoringPropertyTest {
 
-    @Property(trials=10)
+    @Property(trials=100)
     public void strongerHandWins(@From(CompetingHandsGenerator.class) CompetingHands data) {
-        // when Royal Flush, Straight Flush, Straight is generated for hand2, some needed cards
-        // may have been dealt to hand1 already. Filter those cases out.
-        assumeThat(data.hand1().show().size(), is(equalTo(5)));
-        assumeThat(data.hand2().show().size(), is(equalTo(5)));
-
         Hand hand1 = data.hand1();
         Hand hand2 = data.hand2();
         Result result = data.result();
