@@ -17,7 +17,7 @@ class PlayingCardWordSpec extends WordSpec {
     }
   }
 
-  "An Jack of Hearts" when {
+  "A Jack of Hearts" when {
     "instantiated" should {
       "know it is a one-eyed face card" in {
         val card = new PlayingCard(Suit.HEARTS, Rank.JACK)
