@@ -9,7 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/property-test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/data-driven-test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/scala" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/scala" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -34,6 +35,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest_2.12:3.0.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-xml_2.12:1.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.12:1.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scalacheck:scalacheck_2.12:1.13.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scala-sbt:test-interface:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.8.0-beta0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.8.0-beta0" level="project" />
   </component>
