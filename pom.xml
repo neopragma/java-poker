@@ -13,7 +13,7 @@
   </properties>
 
   <name>poker</name>
-  <url>http://maven.apache.org</url>
+  <url>http://github.com/neopragma/java-poker</url>
 
   <dependencies>
     <dependency>
@@ -29,15 +29,26 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.pholser</groupId>
-      <artifactId>junit-quickcheck-poker.generators</artifactId>
-      <version>0.7</version>
+      <groupId>org.scalactic</groupId>
+      <artifactId>scalactic_2.12</artifactId>
+      <version>3.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_2.12</artifactId>
+      <version>3.0.4</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-simple</artifactId>
-        <version>1.8.0-beta0</version>
+    <dependency>
+      <groupId>org.scalacheck</groupId>
+      <artifactId>scalacheck_2.12</artifactId>
+      <version>1.13.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.8.0-beta0</version>
     </dependency>
 
   </dependencies>
