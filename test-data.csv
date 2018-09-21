@@ -1,0 +1,6 @@
+Test #,Description,Hand 1,,,,,Hand 2,,,,,Result
+1,Royal Flush beats Four of a Kind,AS,KS,QS,JS,10S,4S,4H,4D,4C,JS,WIN
+2,Three of a Kind beats Two Pair,2S,2D,2C,8S,6H,QH,QD,5H,5C,3H,WIN
+3,Flush beats Straight,6C,5C,4H,3H,2S,7H,4H,KH,10H,2H,LOSE
+4,Pair tie-break on fifth card,9H,9C,QS,6H,4D,9S,9D,QD,6C,5S,LOSE
+5,Two Pair tie-break on lower pair,10S,10D,6S,6H,JD,10H,10C,7H,7D,JC,LOSE
